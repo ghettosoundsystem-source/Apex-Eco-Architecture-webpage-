@@ -7,636 +7,370 @@
   <meta name="description" content="Apex Eco-Architecture — Cambridge architectural design studio creating zero-concrete ground-screw timber studios, sedum living roofs, and self-build specification packs." />
   <style>
     :root {
-      --bg-charcoal: #121417;
-      --bg-charcoal-panel: #1a1d22;
-      --bg-charcoal-card: #22262d;
-      --text-light: #f4f4f2;
-      --text-muted: #b8bec7;
-      --gold: #d4af37;
-      --gold-light: #f3e5ab;
-      --border-gold: rgba(212, 175, 55, 0.34);
-      --border-subtle: rgba(212, 175, 55, 0.14);
+      --bg-elevated: rgba(45, 50, 59, 0.78);
+      --bg-glass: rgba(255, 255, 255, 0.06);
+      --text-bright: #ffffff;
+      --text-soft: #e2e8f0;
+      --gold: #facc15;
+      --gold-warm: #fde047;
+      --border-glow: rgba(250, 204, 21, 0.36);
+      --border-soft: rgba(255, 255, 255, 0.14);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg-charcoal);
-      color: var(--text-light);
+      background:
+        radial-gradient(circle at 18% 15%, rgba(250, 204, 21, 0.18), transparent 42%),
+        radial-gradient(circle at 85% 22%, rgba(148, 163, 184, 0.24), transparent 48%),
+        linear-gradient(155deg, #22262e 0%, #2c313b 52%, #1b1f26 100%);
+      color: var(--text-bright);
+      min-height: 100vh;
       line-height: 1.65;
-      background-image:
-        linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-        radial-gradient(circle at 82% 14%, rgba(212, 175, 55, 0.11), transparent 45%);
-      background-size: 48px 48px, 48px 48px, 100% 100%;
     }
 
-    .container {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 22px; }
 
     header {
       position: sticky;
-      top: 0;
+      top: 12px;
       z-index: 60;
-      background: rgba(18, 20, 23, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-gold);
+      margin: 12px auto 0;
+      max-width: 1180px;
+      padding: 0 16px;
     }
 
-    .nav-bar {
+    .nav-shell {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 14px 0;
-      gap: 12px;
       flex-wrap: wrap;
-    }
-
-    .brand-lockup {
-      display: flex;
-      align-items: center;
       gap: 12px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: rgba(28, 32, 39, 0.86);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-glow);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.38);
     }
 
-    .arch-mark {
-      width: 34px;
-      height: 34px;
-      border: 1.5px solid var(--gold);
-      border-radius: 6px;
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      font-size: 0.9rem;
-      color: var(--gold);
-      background: rgba(212, 175, 55, 0.08);
-    }
+    .brand-title { font-size: 1rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #ffffff; display: block; }
+    .brand-sub { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-warm); font-weight: 700; }
 
-    .brand-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: #ffffff;
-      display: block;
-    }
-
-    .brand-sub {
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 600;
-    }
-
-    .nav-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .nav-tabs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 
     .tab-btn {
       background: transparent;
       border: 1px solid transparent;
-      color: var(--text-muted);
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 0.84rem;
+      color: var(--text-soft);
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover { color: #ffffff; background: rgba(255, 255, 255, 0.08); }
+    .tab-btn.active {
+      color: #181b20;
+      background: linear-gradient(135deg, #fef08a 0%, #facc15 100%);
+      box-shadow: 0 4px 16px rgba(250, 204, 21, 0.32);
+    }
+
+    .owner-pill {
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      border: 1px solid var(--border-glow);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--gold-warm);
       transition: all 0.2s;
     }
 
-    .tab-btn:hover {
-      color: var(--gold-light);
-      background: rgba(212, 175, 55, 0.08);
+    .owner-pill.unlocked {
+      background: rgba(74, 222, 128, 0.22);
+      border-color: #4ade80;
+      color: #dcfce7;
     }
 
-    .tab-btn.active {
-      color: var(--gold-light);
-      border-color: var(--gold);
-      background: rgba(212, 175, 55, 0.16);
-    }
+    .page-view { display: none; animation: floatIn 0.28s ease; }
+    .page-view.active { display: block; }
 
-    .page-view {
-      display: none;
-      animation: fadeIn 0.25s ease;
-    }
-
-    .page-view.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .hero {
-      padding: 64px 0 52px;
-      border-bottom: 1px solid var(--border-subtle);
-    }
+    .hero { padding: 54px 0 44px; }
 
     .eyebrow {
       display: inline-block;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: 999px;
-      border: 1px solid var(--border-gold);
-      background: rgba(212, 175, 55, 0.1);
-      color: var(--gold-light);
+      background: rgba(250, 204, 21, 0.14);
+      border: 1px solid var(--border-glow);
+      color: var(--gold-warm);
       font-size: 0.74rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
+      font-weight: 800;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       margin-bottom: 18px;
     }
 
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.35rem);
-      font-weight: 800;
-      line-height: 1.13;
-      max-width: 860px;
-      margin-bottom: 18px;
-      color: #ffffff;
-    }
-
-    .hero h1 span {
-      color: var(--gold);
-    }
-
-    .hero p {
-      font-size: 1.06rem;
-      color: var(--text-muted);
-      max-width: 700px;
-      margin-bottom: 28px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 40px;
-    }
+    .hero h1 { font-size: clamp(2.1rem, 5vw, 3.45rem); font-weight: 800; line-height: 1.12; max-width: 860px; margin-bottom: 18px; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { font-size: 1.08rem; color: var(--text-soft); max-width: 700px; margin-bottom: 28px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 36px; }
 
     .btn-gold {
       display: inline-block;
       padding: 13px 26px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 0.92rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.9rem;
       text-decoration: none;
       border: none;
       cursor: pointer;
-      color: #121417;
-      background: linear-gradient(135deg, #f3e5ab 0%, #d4af37 100%);
-      box-shadow: 0 8px 24px rgba(212, 175, 55, 0.24);
+      color: #181b20;
+      background: linear-gradient(135deg, #fef08a 0%, #facc15 100%);
+      box-shadow: 0 10px 26px rgba(250, 204, 21, 0.28);
       transition: transform 0.2s;
     }
 
-    .btn-gold:hover {
-      transform: translateY(-2px);
-    }
+    .btn-gold:hover { transform: translateY(-2px); }
 
-    .btn-outline {
+    .btn-glass {
       display: inline-block;
       padding: 13px 26px;
-      border-radius: 8px;
+      border-radius: 999px;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       text-decoration: none;
-      border: 1px solid var(--border-gold);
+      border: 1px solid var(--border-soft);
       cursor: pointer;
-      color: var(--gold-light);
-      background: rgba(34, 38, 45, 0.85);
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--gold);
-      transform: translateY(-2px);
-    }
-
-    .specs-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-      gap: 14px;
-    }
-
-    .spec-box {
-      background: var(--bg-charcoal-panel);
-      border: 1px solid var(--border-subtle);
-      border-left: 3px solid var(--gold);
-      border-radius: 8px;
-      padding: 16px;
-    }
-
-    .spec-val {
-      font-size: 1.25rem;
-      font-weight: 800;
       color: #ffffff;
+      background: var(--bg-glass);
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s, border-color 0.2s;
     }
 
-    .spec-lbl {
-      font-size: 0.76rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gold);
+    .btn-glass:hover { transform: translateY(-2px); border-color: var(--gold); }
+
+    .highlights-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+
+    .stat-orb {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-soft);
+      border-radius: 22px;
+      padding: 20px;
     }
 
-    .section-block {
-      padding: 54px 0;
-    }
+    .stat-orb strong { display: block; font-size: 1.25rem; font-weight: 800; color: var(--gold-warm); }
+    .stat-orb span { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-soft); }
 
-    .section-kicker {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
+    .section-wrap { padding: 48px 0; }
+    .kicker { font-size: 0.75rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-warm); margin-bottom: 6px; }
+    .section-wrap h2 { font-size: clamp(1.65rem, 3.5vw, 2.25rem); font-weight: 800; margin-bottom: 10px; }
+    .section-lead { color: var(--text-soft); max-width: 680px; margin-bottom: 30px; }
 
-    .section-block h2 {
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
+    .fluid-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
 
-    .section-intro {
-      color: var(--text-muted);
-      max-width: 670px;
-      margin-bottom: 32px;
-    }
-
-    .models-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 22px;
-    }
-
-    .model-card {
-      background: linear-gradient(165deg, #242932 0%, #16191e 100%);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 24px;
+    .fluid-card {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-soft);
+      border-radius: 26px;
+      padding: 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.22s, border-color 0.22s;
+      transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
-    .model-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold);
-    }
+    .fluid-card:hover { transform: translateY(-5px); border-color: var(--border-glow); }
+    .fluid-card h3 { font-size: 1.24rem; margin-bottom: 10px; color: #ffffff; }
+    .fluid-card p { font-size: 0.92rem; color: var(--text-soft); margin-bottom: 14px; }
+    .fluid-card ul { list-style: none; margin-bottom: 18px; }
+    .fluid-card li { font-size: 0.85rem; color: #f1f5f9; margin-bottom: 6px; padding-left: 16px; position: relative; }
+    .fluid-card li::before { content: "✦"; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem; }
 
-    .model-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .model-tag {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 4px 10px;
-      border-radius: 4px;
-      background: rgba(212, 175, 55, 0.14);
-      color: var(--gold-light);
-    }
-
-    .model-dim {
-      font-size: 0.76rem;
-      font-weight: 700;
-      color: var(--gold);
-    }
-
-    .model-card h3 {
-      font-size: 1.25rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-      color: #ffffff;
-    }
-
-    .model-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .model-specs {
-      list-style: none;
-      border-top: 1px solid var(--border-subtle);
-      padding-top: 12px;
-      margin-bottom: 20px;
-    }
-
-    .model-specs li {
-      font-size: 0.83rem;
-      color: var(--text-light);
-      margin-bottom: 6px;
-      padding-left: 15px;
-      position: relative;
-    }
-
-    .model-specs li::before {
-      content: "▪";
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-    }
-
-    .model-btn {
-      display: block;
+    .card-action {
+      display: inline-block;
       text-align: center;
-      padding: 10px 14px;
-      border-radius: 6px;
-      border: 1px solid var(--border-gold);
-      background: rgba(212, 175, 55, 0.12);
-      color: var(--gold-light);
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border-glow);
+      background: rgba(250, 204, 21, 0.12);
+      color: var(--gold-warm);
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
     }
 
-    .model-btn:hover {
-      background: var(--gold);
-      color: #121417;
+    .card-action:hover { background: var(--gold); color: #181b20; }
+
+    .owner-lock-banner {
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid var(--border-glow);
+      border-radius: 22px;
+      padding: 18px 22px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .upload-panel {
-      background: var(--bg-charcoal-panel);
-      border: 1px dashed var(--border-gold);
-      border-radius: 12px;
+      display: none;
+      background: var(--bg-elevated);
+      backdrop-filter: blur(14px);
+      border: 1px dashed var(--gold);
+      border-radius: 24px;
       padding: 22px;
       margin-bottom: 26px;
-      display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 14px;
       align-items: end;
     }
 
-    .field-group label {
+    .upload-panel.visible { display: grid; }
+
+    .field label {
       display: block;
       font-size: 0.74rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--gold-light);
-      font-weight: 700;
+      color: var(--gold-warm);
+      font-weight: 800;
       margin-bottom: 6px;
     }
 
-    .field-group input,
-    .field-group select,
-    .field-group textarea {
+    .field input, .field select, .field textarea {
       width: 100%;
-      padding: 10px 12px;
-      border-radius: 6px;
-      border: 1px solid var(--border-gold);
-      background: #121417;
+      padding: 11px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      background: rgba(22, 26, 32, 0.88);
       color: #ffffff;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
     }
 
-    .gallery-filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 22px;
-    }
-
-    .filter-pill {
-      padding: 7px 14px;
-      border-radius: 6px;
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-charcoal-card);
-      color: var(--text-muted);
-      font-size: 0.8rem;
+    .filter-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .pill-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-glass);
+      color: var(--text-soft);
+      font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
     }
+    .pill-btn.active { background: var(--gold); color: #181b20; border-color: var(--gold); }
 
-    .filter-pill.active {
-      border-color: var(--gold);
-      color: var(--gold-light);
-      background: rgba(212, 175, 55, 0.16);
-    }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(295px, 1fr)); gap: 22px; }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-      gap: 20px;
-    }
-
-    .gallery-card {
-      background: var(--bg-charcoal-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
+    .photo-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-soft);
+      border-radius: 24px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
     }
 
-    .gallery-thumb {
-      height: 210px;
-      background: linear-gradient(135deg, #282d37 0%, #131519 100%);
+    .photo-stage {
+      height: 215px;
+      background: linear-gradient(135deg, rgba(250, 204, 21, 0.2), rgba(29, 33, 40, 0.92));
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
     }
 
-    .gallery-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .photo-stage img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-placeholder { text-align: center; padding: 18px; }
+    .photo-placeholder span { display: block; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-warm); margin-bottom: 6px; }
 
-    .placeholder-art {
-      text-align: center;
-      padding: 20px;
-      color: var(--gold-light);
-    }
+    .photo-meta { padding: 20px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .photo-cat { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold-warm); font-weight: 800; margin-bottom: 4px; }
+    .photo-meta h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .photo-meta p { font-size: 0.86rem; color: var(--text-soft); }
 
-    .placeholder-art span {
-      display: block;
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-
-    .gallery-body {
-      padding: 18px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .gallery-cat {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .gallery-body h3 {
-      font-size: 1.08rem;
-      margin-bottom: 6px;
-    }
-
-    .gallery-body p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .btn-remove {
+    .btn-del {
+      display: none;
       margin-top: 12px;
-      background: transparent;
-      border: 1px solid rgba(248, 113, 113, 0.4);
-      color: #fca5a5;
-      padding: 5px 10px;
-      border-radius: 5px;
+      background: rgba(239, 68, 68, 0.18);
+      border: 1px solid rgba(248, 113, 113, 0.5);
+      color: #fecaca;
+      padding: 6px 12px;
+      border-radius: 999px;
       font-size: 0.75rem;
+      font-weight: 700;
       cursor: pointer;
       align-self: flex-start;
     }
 
-    .materials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(255px, 1fr));
-      gap: 20px;
-    }
+    .btn-del.visible { display: inline-block; }
 
-    .mat-card {
-      background: var(--bg-charcoal-panel);
-      border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 24px;
-    }
-
-    .mat-num {
-      font-family: "Courier New", Courier, monospace;
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-
-    .mat-card h3 {
-      font-size: 1.08rem;
-      margin-bottom: 8px;
-      color: #ffffff;
-    }
-
-    .mat-card p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .quote-form {
-      background: var(--bg-charcoal-panel);
-      border: 1px solid var(--border-gold);
-      border-radius: 12px;
+    .split-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 26px; align-items: start; }
+    .glass-panel {
+      background: var(--bg-elevated);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-soft);
+      border-radius: 26px;
       padding: 26px;
       display: flex;
       flex-direction: column;
       gap: 14px;
     }
 
-    .contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .contact-item {
-      background: var(--bg-charcoal-card);
-      border: 1px solid var(--border-subtle);
-      padding: 16px 18px;
-      border-radius: 8px;
+    .stars { color: var(--gold-warm); font-size: 0.95rem; margin-bottom: 6px; }
+    .contact-stack { display: flex; flex-direction: column; gap: 14px; }
+    .contact-bubble {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-soft);
+      border-radius: 22px;
+      padding: 18px 22px;
       text-decoration: none;
       color: #ffffff;
       transition: border-color 0.2s;
     }
+    .contact-bubble:hover { border-color: var(--gold); }
+    .contact-bubble span { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold-warm); font-weight: 800; margin-bottom: 4px; }
 
-    .contact-item:hover {
-      border-color: var(--gold);
-    }
+    footer { padding: 34px 0 46px; text-align: center; font-size: 0.84rem; color: var(--text-soft); }
 
-    .contact-item span {
-      display: block;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--gold);
-      font-weight: 700;
-    }
-
-    .contact-item strong {
-      font-size: 1rem;
-    }
-
-    footer {
-      margin-top: 40px;
-      padding: 30px 0;
-      border-top: 1px solid var(--border-subtle);
-      text-align: center;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    @media (max-width: 780px) {
-      .contact-layout {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 820px) {
+      .nav-shell { border-radius: 24px; }
+      .split-layout { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="container nav-bar">
-      <div class="brand-lockup">
-        <div class="arch-mark">AA</div>
-        <div>
-          <span class="brand-title">Apex Eco-Architecture</span>
-          <span class="brand-sub">Cambridge • Charcoal &amp; Gold Architectural Studio</span>
-        </div>
+    <div class="nav-shell">
+      <div>
+        <span class="brand-title">Apex Eco-Architecture</span>
+        <span class="brand-sub">Cambridge • Modular &amp; Ground-Screw Design</span>
       </div>
       <nav class="nav-tabs" role="tablist">
-        <button class="tab-btn active" data-page="home">Home &amp; Builds</button>
-        <button class="tab-btn" data-page="gallery">Project Gallery</button>
-        <button class="tab-btn" data-page="engineering">Engineering &amp; IP</button>
-        <button class="tab-btn" data-page="contact">Contact &amp; Specs</button>
+        <button class="tab-btn active" data-page="home">Home</button>
+        <button class="tab-btn" data-page="gallery">Gallery</button>
+        <button class="tab-btn" data-page="reviews">Reviews</button>
+        <button class="tab-btn" data-page="contact">Contact</button>
+        <button class="owner-pill" id="ownerToggleBtn" onclick="toggleOwnerMode()">Owner Lock</button>
       </nav>
     </div>
   </header>
@@ -648,141 +382,67 @@
           <div class="eyebrow">Cambridge, United Kingdom • Sustainable Spatial Design</div>
           <h1>Zero-Concrete <span>Modular Eco-Architecture</span> Engineered for Light &amp; Longevity.</h1>
           <p>
-            Led by Architectural Designer Darryll Lee Robert Grass, Apex Eco-Architecture creates reversible ground-screw timber and steel buildings, living sedum roofs, and zero-waste modular cassette systems proportioned through sacred geometry.
+            Led by Darryll Lee Robert Grass, Apex Eco-Architecture designs reversible ground-screw timber and steel studios, sedum living roofs, and zero-waste modular cassette builds.
           </p>
           <div class="hero-actions">
-            <button class="btn-gold" onclick="switchPage('gallery')">Open &amp; Upload Blueprints / Photos</button>
-            <button class="btn-outline" onclick="switchPage('contact')">Request Spec or Licensing Info</button>
+            <button class="btn-gold" onclick="switchPage('contact')">Discuss a Build or IP</button>
+            <button class="btn-glass" onclick="switchPage('gallery')">Explore Project Gallery</button>
+            <button class="btn-glass" onclick="switchPage('reviews')">Client Reviews</button>
           </div>
 
-          <div class="specs-strip">
-            <div class="spec-box">
-              <div class="spec-val">0% Concrete</div>
-              <div class="spec-lbl">Galvanized Ground Screws</div>
-            </div>
-            <div class="spec-box">
-              <div class="spec-val">1200×2400</div>
-              <div class="spec-lbl">Zero-Waste Cassette Grid</div>
-            </div>
-            <div class="spec-box">
-              <div class="spec-val">1 : 1.618</div>
-              <div class="spec-lbl">Golden Ratio Proportions</div>
-            </div>
-            <div class="spec-box">
-              <div class="spec-val">Living Roofs</div>
-              <div class="spec-lbl">Biodiverse Sedum Systems</div>
-            </div>
+          <div class="highlights-row">
+            <div class="stat-orb"><strong>0% Concrete</strong><span>Ground-Screw Foundations</span></div>
+            <div class="stat-orb"><strong>1200×2400</strong><span>Zero-Waste Cassette Grid</span></div>
+            <div class="stat-orb"><strong>1 : 1.618</strong><span>Golden Ratio Proportions</span></div>
+            <div class="stat-orb"><strong>Living Roofs</strong><span>Sedum &amp; Eco Envelopes</span></div>
           </div>
         </div>
       </section>
 
-      <section class="section-block">
+      <section class="section-wrap">
         <div class="container">
-          <div class="section-kicker">Architectural Portfolio</div>
-          <h2>Signature Eco-Pods, Studios &amp; Sanctuaries</h2>
-          <p class="section-intro">Precision-drafted modular structures designed for rapid off-site fabrication, minimal ground disturbance, and natural thermal performance.</p>
+          <div class="kicker">Signature Concepts</div>
+          <h2>Pods, Studios &amp; Sanctuaries</h2>
+          <p class="section-lead">Turnkey self-build specification packs and B2B manufacturing concepts for UK and European builders.</p>
 
-          <div class="models-grid">
-            <article class="model-card">
+          <div class="fluid-grid">
+            <article class="fluid-card">
               <div>
-                <div class="model-meta">
-                  <span class="model-tag">Self-Build Spec Pack</span>
-                  <span class="model-dim">3.6m × 3.6m • 13m²</span>
-                </div>
                 <h3>The Golden Grid Eco-Pod</h3>
-                <p>Compact, high-efficiency garden studio or retreat engineered on a strict 1200mm modular cassette grid with zero sheet-material offcuts.</p>
-                <ul class="model-specs">
-                  <li>Galvanized steel ground-screw foundation</li>
+                <p>3.6m × 3.6m (13m²) zero-concrete studio proportioned for zero sheet waste and rapid assembly.</p>
+                <ul>
+                  <li>Galvanized ground-screw base</li>
                   <li>Western Red Cedar &amp; bronzed glazing</li>
-                  <li>Turnkey self-build pack on Gumroad</li>
+                  <li>Self-build pack available on Gumroad</li>
                 </ul>
               </div>
-              <a href="https://dgrassdesign.gumroad.com" target="_blank" rel="noopener" class="model-btn">View Self-Build Pack</a>
+              <a href="https://dgrassdesign.gumroad.com" target="_blank" rel="noopener" class="card-action">View Self-Build Pack</a>
             </article>
 
-            <article class="model-card">
+            <article class="fluid-card">
               <div>
-                <div class="model-meta">
-                  <span class="model-tag">Garden Studio</span>
-                  <span class="model-dim">4.0m × 4.0m • 16m²</span>
-                </div>
-                <h3>The Newnham Garden Studio</h3>
-                <p>Architectural workspace and creative sanctuary tailored for Cambridge townhouses and heritage gardens requiring reversible foundations.</p>
-                <ul class="model-specs">
-                  <li>Shou Sugi Ban charred timber accents</li>
-                  <li>Extensive wildflower &amp; sedum living roof</li>
-                  <li>High-insulation breathable timber envelope</li>
+                <h3>Garden Studios &amp; Eco-Homes</h3>
+                <p>From the 4.0m × 4.0m Newnham Studio and Bowfront Summerhouse to three-level residential floor plans.</p>
+                <ul>
+                  <li>Shou Sugi Ban &amp; Siberian Larch options</li>
+                  <li>Sedum living roofs &amp; natural daylight</li>
+                  <li>CAD floor plan sets (A-101 to A-103)</li>
                 </ul>
               </div>
-              <button class="model-btn" onclick="switchPage('contact')">Enquire About Custom Spec</button>
+              <button class="card-action" onclick="switchPage('contact')">Request Specification</button>
             </article>
 
-            <article class="model-card">
+            <article class="fluid-card">
               <div>
-                <div class="model-meta">
-                  <span class="model-tag">Curved Glulam</span>
-                  <span class="model-dim">Bowfront Prototype</span>
-                </div>
-                <h3>The Bowfront Summerhouse</h3>
-                <p>Panoramic curved-glazing pavilion uniting traditional Cambridge joinery aesthetics with modern laminated timber engineering.</p>
-                <ul class="model-specs">
-                  <li>Sweeping solar-gain front elevation</li>
-                  <li>Siberian Larch vertical rainscreen cladding</li>
-                  <li>Ideal for garden rooms &amp; boutique hospitality</li>
+                <h3>The Rotunda &amp; Sanctuaries</h3>
+                <p>21.6m circular sanctuary concepts, modular courtyards, and family respite campus visions.</p>
+                <ul>
+                  <li>Radial glulam &amp; central oculus light</li>
+                  <li>Phased modular courtyard expansion</li>
+                  <li>B2B manufacturer licensing available</li>
                 </ul>
               </div>
-              <button class="model-btn" onclick="switchPage('contact')">Request Design Brief</button>
-            </article>
-
-            <article class="model-card">
-              <div>
-                <div class="model-meta">
-                  <span class="model-tag">Flagship Sanctuary</span>
-                  <span class="model-dim">21.6m Diameter</span>
-                </div>
-                <h3>The Rotunda of Light</h3>
-                <p>Monumental circular timber-and-glass sanctuary engineered for community hubs, wellness retreats, and Lillie's Centres respite campuses.</p>
-                <ul class="model-specs">
-                  <li>Radial glulam roof structure &amp; central oculus</li>
-                  <li>360-degree passive daylighting</li>
-                  <li>Acoustic timber baffles &amp; natural ventilation</li>
-                </ul>
-              </div>
-              <button class="model-btn" onclick="switchPage('contact')">Discuss Campus Licensing</button>
-            </article>
-
-            <article class="model-card">
-              <div>
-                <div class="model-meta">
-                  <span class="model-tag">Multi-Level CAD Set</span>
-                  <span class="model-dim">14.0m × 6.0m • 3 Levels</span>
-                </div>
-                <h3>Luxury Cedar &amp; Bronze Eco-Home</h3>
-                <p>Three-storey contemporary residential concept combining dark standing-seam metal, warm cedar soffits, and bronzed triple glazing.</p>
-                <ul class="model-specs">
-                  <li>Full floor plan sheets (A-101 to A-103)</li>
-                  <li>Integrated cantilevered terraces</li>
-                  <li>Designed for low-carbon self-build plots</li>
-                </ul>
-              </div>
-              <button class="model-btn" onclick="switchPage('contact')">Request CAD Overview</button>
-            </article>
-
-            <article class="model-card">
-              <div>
-                <div class="model-meta">
-                  <span class="model-tag">Modular Courtyard</span>
-                  <span class="model-dim">9.0m × 6.0m × 3.0m</span>
-                </div>
-                <h3>The Sacred Helix &amp; Courtyard System</h3>
-                <p>Configurable multi-pod courtyard layout for eco-tourism lodges, off-grid retreats, and family annex compounds.</p>
-                <ul class="model-specs">
-                  <li>Expandable pod-by-pod phased installation</li>
-                  <li>Off-grid solar &amp; rainwater harvesting ready</li>
-                  <li>Available for UK/EU manufacturer licensing</li>
-                </ul>
-              </div>
-              <button class="model-btn" onclick="switchPage('contact')">Partner on Modular Rollout</button>
+              <button class="card-action" onclick="switchPage('contact')">Explore Licensing</button>
             </article>
           </div>
         </div>
@@ -790,20 +450,23 @@
     </div>
 
     <div id="page-gallery" class="page-view">
-      <section class="section-block">
+      <section class="section-wrap">
         <div class="container">
-          <div class="section-kicker">Renders, Scale Models &amp; CAD Sheets</div>
+          <div class="kicker">Renders, Models &amp; Plans</div>
           <h2>Architectural Project Gallery</h2>
-          <p class="section-intro">
-            Upload architectural renders, scale model photographs, or CAD plan images directly below. (Tip: To publish photos permanently to all visitors on your .co.uk site, upload images to an <code>images/</code> folder in your GitHub repo.)
-          </p>
+          <p class="section-lead">View eco-pod concepts, CAD layouts, and scale models.</p>
 
-          <div class="upload-panel">
-            <div class="field-group">
+          <div class="owner-lock-banner">
+            <span id="ownerStatusText">Viewing in Visitor Mode — only the site owner can upload or remove visuals.</span>
+            <button class="owner-pill" onclick="toggleOwnerMode()">Unlock Owner Edit Mode</button>
+          </div>
+
+          <div class="upload-panel" id="uploadPanel">
+            <div class="field">
               <label for="archPhotoTitle">Design / Model Title</label>
-              <input type="text" id="archPhotoTitle" placeholder="e.g. Overlapping Cylindrical Scale Model" />
+              <input type="text" id="archPhotoTitle" placeholder="e.g. Golden Grid Eco-Pod Render" />
             </div>
-            <div class="field-group">
+            <div class="field">
               <label for="archPhotoCategory">Category</label>
               <select id="archPhotoCategory">
                 <option value="pods">Eco-Pods &amp; Studios</option>
@@ -812,21 +475,21 @@
                 <option value="sanctuaries">Sanctuaries &amp; Courtyard</option>
               </select>
             </div>
-            <div class="field-group">
+            <div class="field">
               <label for="archPhotoFile">Select Image(s)</label>
               <input type="file" id="archPhotoFile" accept="image/*" multiple />
             </div>
             <div>
-              <button class="btn-gold" style="width: 100%;" onclick="handleArchPhotoUpload()">+ Add to Gallery</button>
+              <button class="btn-gold" style="width: 100%;" onclick="handleArchPhotoUpload()">+ Publish Image</button>
             </div>
           </div>
 
-          <div class="gallery-filters">
-            <button class="filter-pill active" data-arch-filter="all">All Visuals</button>
-            <button class="filter-pill" data-arch-filter="pods">Eco-Pods &amp; Studios</button>
-            <button class="filter-pill" data-arch-filter="cad">CAD Plans &amp; Geometry</button>
-            <button class="filter-pill" data-arch-filter="models">Scale Models &amp; Renders</button>
-            <button class="filter-pill" data-arch-filter="sanctuaries">Sanctuaries &amp; Courtyard</button>
+          <div class="filter-pills">
+            <button class="pill-btn active" data-arch-filter="all">All Visuals</button>
+            <button class="pill-btn" data-arch-filter="pods">Eco-Pods &amp; Studios</button>
+            <button class="pill-btn" data-arch-filter="cad">CAD Plans &amp; Geometry</button>
+            <button class="pill-btn" data-arch-filter="models">Scale Models &amp; Renders</button>
+            <button class="pill-btn" data-arch-filter="sanctuaries">Sanctuaries &amp; Courtyard</button>
           </div>
 
           <div class="gallery-grid" id="archGalleryGrid"></div>
@@ -834,79 +497,80 @@
       </section>
     </div>
 
-    <div id="page-engineering" class="page-view">
-      <section class="section-block">
+    <div id="page-reviews" class="page-view">
+      <section class="section-wrap">
         <div class="container">
-          <div class="section-kicker">Construction Methodology &amp; Partnerships</div>
-          <h2>Four Pillars &amp; Licensing Models</h2>
-          <p class="section-intro">Engineered for self-builders, modular manufacturers, and sanctuary campuses across the UK and Europe.</p>
+          <div class="kicker">Collaborator &amp; Reader Feedback</div>
+          <h2>Client &amp; Partner Reviews</h2>
+          <p class="section-lead">Feedback on our modular concepts, specification packs, and architectural vision.</p>
 
-          <div class="materials-grid">
-            <div class="mat-card">
-              <div class="mat-num">01 // FOUNDATIONS</div>
-              <h3>Reversible Ground Screws</h3>
-              <p>Eliminates carbon-heavy concrete pours and excavation—installing in hours with zero curing delay and leaving soil ecosystems intact.</p>
-            </div>
-            <div class="mat-card">
-              <div class="mat-num">02 // GEOMETRY</div>
-              <h3>Zero-Waste Cassette Grid</h3>
-              <p>Every wall, floor, and roof panel aligns to standard 1200mm × 2400mm structural sheet dimensions, slashing site waste and build costs.</p>
-            </div>
-            <div class="mat-card">
-              <div class="mat-num">03 // ENVELOPE</div>
-              <h3>Natural Timber &amp; Bronze Glass</h3>
-              <p>Western Red Cedar, Siberian Larch, Shou Sugi Ban charred cladding, and solar-control bronzed glazing built to weather gracefully.</p>
-            </div>
-            <div class="mat-card">
-              <div class="mat-num">04 // LICENSING</div>
-              <h3>Self-Build &amp; B2B IP Rights</h3>
-              <p>Available as turnkey self-build packs on Gumroad or structured B2B manufacturing and sanctuary campus licensing agreements.</p>
-            </div>
+          <div class="split-layout">
+            <div class="fluid-grid" id="archReviewsList" style="grid-template-columns: 1fr;"></div>
+
+            <form class="glass-panel" onsubmit="addArchReview(event)">
+              <h3 style="font-size: 1.2rem;">Submit a Review</h3>
+              <div class="field">
+                <label for="archRevName">Your Name / Role</label>
+                <input type="text" id="archRevName" required placeholder="e.g. Martin R. • Self-Builder" />
+              </div>
+              <div class="field">
+                <label for="archRevRating">Rating</label>
+                <select id="archRevRating">
+                  <option value="5">★★★★★ — 5 Stars</option>
+                  <option value="4">★★★★☆ — 4 Stars</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="archRevText">Your Feedback</label>
+                <textarea id="archRevText" rows="4" required placeholder="Share your thoughts on the modular design or specification..."></textarea>
+              </div>
+              <button type="submit" class="btn-gold">Post Review</button>
+            </form>
           </div>
         </div>
       </section>
     </div>
 
     <div id="page-contact" class="page-view">
-      <section class="section-block">
+      <section class="section-wrap">
         <div class="container">
-          <div class="section-kicker">Architectural Studio Desk</div>
-          <h2>Discuss a Build, Spec Pack or Partnership</h2>
-          <p class="section-intro">Led by <strong>Darryll Lee Robert Grass</strong>, Lead Architectural Designer at Apex Eco-Architecture (a division of CBD Enterprises UK).</p>
+          <div class="kicker">Studio Desk</div>
+          <h2>Enquire About Builds, Packs or Licensing</h2>
+          <p class="section-lead">Connect with Apex Eco-Architecture in Cambridge.</p>
 
-          <div class="contact-layout">
-            <form class="quote-form" onsubmit="sendArchEmail(event)">
-              <div class="field-group">
+          <div class="split-layout">
+            <form class="glass-panel" onsubmit="sendArchEmail(event)">
+              <div class="field">
                 <label for="archName">Your Name / Organization</label>
                 <input type="text" id="archName" required placeholder="Full name or company" />
               </div>
-              <div class="field-group">
-                <label for="archTopic">Enquiry Type</label>
+              <div class="field">
+                <label for="archTopic">Topic</label>
                 <select id="archTopic">
                   <option>Self-Build Spec Pack / Eco-Pod</option>
-                  <option>Bespoke Garden Studio / Eco-Home</option>
+                  <option>Bespoke Studio / Eco-Home</option>
                   <option>B2B Manufacturer / IP Licensing</option>
-                  <option>Sanctuary / Community Campus Design</option>
+                  <option>Sanctuary Campus Concept</option>
                 </select>
               </div>
-              <div class="field-group">
-                <label for="archNotes">Site Details, Dimensions or Licensing Notes</label>
-                <textarea id="archNotes" rows="4" required placeholder="Share your plot size, concept interest, or project goals..."></textarea>
+              <div class="field">
+                <label for="archNotes">Project Notes</label>
+                <textarea id="archNotes" rows="4" required placeholder="Tell us about your site, build goals, or licensing inquiry..."></textarea>
               </div>
-              <button type="submit" class="btn-gold">Send Architectural Enquiry</button>
+              <button type="submit" class="btn-gold">Send Enquiry</button>
             </form>
 
-            <div class="contact-list">
-              <a href="mailto:apexecoarchitecture@gmail.com" class="contact-item">
+            <div class="contact-stack">
+              <a href="mailto:apexecoarchitecture@gmail.com" class="contact-bubble">
                 <span>Studio Email</span>
                 <strong>apexecoarchitecture@gmail.com</strong>
               </a>
-              <a href="tel:01223650566" class="contact-item">
+              <a href="tel:01223650566" class="contact-bubble">
                 <span>Cambridge Studio Line</span>
                 <strong>(01223) 650566</strong>
               </a>
-              <a href="https://dgrassdesign.gumroad.com" target="_blank" rel="noopener" class="contact-item">
-                <span>Digital Spec Packs</span>
+              <a href="https://dgrassdesign.gumroad.com" target="_blank" rel="noopener" class="contact-bubble">
+                <span>Specification Packs</span>
                 <strong>dgrassdesign.gumroad.com</strong>
               </a>
             </div>
@@ -923,94 +587,99 @@
   </footer>
 
   <script>
-    const archTabBtns = document.querySelectorAll(".tab-btn");
-    const archPageViews = document.querySelectorAll(".page-view");
+    const OWNER_PIN = "apex26";
+    let isOwner = sessionStorage.getItem("apex_arch_owner") === "true";
+
+    const tabBtns = document.querySelectorAll(".tab-btn");
+    const pageViews = document.querySelectorAll(".page-view");
 
     function switchPage(pageId) {
-      archTabBtns.forEach(btn => btn.classList.toggle("active", btn.dataset.page === pageId));
-      archPageViews.forEach(view => view.classList.toggle("active", view.id === "page-" + pageId));
+      tabBtns.forEach(btn => btn.classList.toggle("active", btn.dataset.page === pageId));
+      pageViews.forEach(view => view.classList.toggle("active", view.id === "page-" + pageId));
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
-    archTabBtns.forEach(btn => {
-      btn.addEventListener("click", () => switchPage(btn.dataset.page));
-    });
+    tabBtns.forEach(btn => btn.addEventListener("click", () => switchPage(btn.dataset.page)));
+
+    function syncOwnerUI() {
+      const panel = document.getElementById("uploadPanel");
+      const statusText = document.getElementById("ownerStatusText");
+      const topBtn = document.getElementById("ownerToggleBtn");
+
+      if (panel) panel.classList.toggle("visible", isOwner);
+      if (statusText) {
+        statusText.textContent = isOwner
+          ? "Owner Edit Mode Active — you can upload or remove architectural visuals."
+          : "Viewing in Visitor Mode — only the site owner can upload or remove visuals.";
+      }
+      if (topBtn) {
+        topBtn.textContent = isOwner ? "Owner Unlocked" : "Owner Lock";
+        topBtn.classList.toggle("unlocked", isOwner);
+      }
+      document.querySelectorAll(".btn-del").forEach(btn => btn.classList.toggle("visible", isOwner));
+    }
+
+    function toggleOwnerMode() {
+      if (isOwner) {
+        isOwner = false;
+        sessionStorage.removeItem("apex_arch_owner");
+        syncOwnerUI();
+        return;
+      }
+      const pin = prompt("Enter Owner PIN to unlock editing:");
+      if (pin === OWNER_PIN) {
+        isOwner = true;
+        sessionStorage.setItem("apex_arch_owner", "true");
+        syncOwnerUI();
+      } else if (pin !== null) {
+        alert("Incorrect PIN.");
+      }
+    }
 
     const defaultArchGallery = [
-      {
-        id: "arch-1",
-        title: "The Golden Grid Eco-Pod (3.6m × 3.6m)",
-        category: "pods",
-        catLabel: "Eco-Pods & Studios",
-        desc: "13m² zero-concrete ground-screw studio on a 1200mm modular cassette grid.",
-        imgUrl: ""
-      },
-      {
-        id: "arch-2",
-        title: "Three-Level Eco-Home CAD Set (A-101 to A-103)",
-        category: "cad",
-        catLabel: "CAD Plans & Geometry",
-        desc: "14.0m × 6.0m cedar, standing-seam metal, and bronzed-glass architectural floor plans.",
-        imgUrl: ""
-      },
-      {
-        id: "arch-3",
-        title: "Overlapping Cylindrical Scale Model",
-        category: "models",
-        catLabel: "Scale Models & Renders",
-        desc: "Physical scale model testing room intersections, circular geometry, and stair placement.",
-        imgUrl: ""
-      },
-      {
-        id: "arch-4",
-        title: "The Rotunda of Light (21.6m Sanctuary)",
-        category: "sanctuaries",
-        catLabel: "Sanctuaries & Courtyard",
-        desc: "Circular glulam and daylight oculus sanctuary concept for respite and community hubs.",
-        imgUrl: ""
-      }
+      { id: "a1", title: "The Golden Grid Eco-Pod", category: "pods", catLabel: "Eco-Pods & Studios", desc: "3.6m × 3.6m ground-screw studio on a zero-waste modular grid.", imgUrl: "" },
+      { id: "a2", title: "Three-Level Eco-Home Floor Plans", category: "cad", catLabel: "CAD Plans & Geometry", desc: "14.0m × 6.0m multi-level architectural sheets A-101 to A-103.", imgUrl: "" },
+      { id: "a3", title: "Overlapping Cylindrical Model", category: "models", catLabel: "Scale Models & Renders", desc: "Physical model studying room intersections and circulation.", imgUrl: "" },
+      { id: "a4", title: "The Rotunda of Light", category: "sanctuaries", catLabel: "Sanctuaries & Courtyard", desc: "21.6m circular sanctuary concept for community and respite hubs.", imgUrl: "" }
     ];
 
-    let savedArchGallery = JSON.parse(localStorage.getItem("apex_eco_arch_gallery") || "[]");
-    let currentArchFilter = "all";
+    let savedArchGallery = JSON.parse(localStorage.getItem("apex_arch_gallery_v2") || "[]");
+    let activeArchFilter = "all";
 
     function renderArchGallery() {
       const grid = document.getElementById("archGalleryGrid");
-      const combined = [...savedArchGallery, ...defaultArchGallery];
-      const items = currentArchFilter === "all" ? combined : combined.filter(i => i.category === currentArchFilter);
+      const all = [...savedArchGallery, ...defaultArchGallery];
+      const list = activeArchFilter === "all" ? all : all.filter(x => x.category === activeArchFilter);
 
-      grid.innerHTML = items.map(item => `
-        <article class="gallery-card">
-          <div class="gallery-thumb">
+      grid.innerHTML = list.map(item => `
+        <article class="photo-card">
+          <div class="photo-stage">
             ${item.imgUrl
               ? `<img src="${item.imgUrl}" alt="${item.title}" />`
-              : `<div class="placeholder-art"><span>Design Slot</span><strong>${item.catLabel}</strong></div>`
+              : `<div class="photo-placeholder"><span>Design Slot</span><strong>${item.catLabel}</strong></div>`
             }
           </div>
-          <div class="gallery-body">
+          <div class="photo-meta">
             <div>
-              <div class="gallery-cat">${item.catLabel}</div>
+              <div class="photo-cat">${item.catLabel}</div>
               <h3>${item.title}</h3>
               <p>${item.desc}</p>
             </div>
-            ${item.isCustom ? `<button class="btn-remove" onclick="removeArchPhoto('${item.id}')">Remove Image</button>` : ""}
+            ${item.isCustom ? `<button class="btn-del ${isOwner ? "visible" : ""}" onclick="deleteArchPhoto('${item.id}')">Remove</button>` : ""}
           </div>
         </article>
       `).join("");
     }
 
     function handleArchPhotoUpload() {
+      if (!isOwner) { alert("Unlock Owner Mode first."); return; }
       const fileInput = document.getElementById("archPhotoFile");
       const titleInput = document.getElementById("archPhotoTitle");
       const catSelect = document.getElementById("archPhotoCategory");
       const files = fileInput.files;
+      if (!files.length) { alert("Select at least one image."); return; }
 
-      if (!files.length) {
-        alert("Please select at least one image file first.");
-        return;
-      }
-
-      const catLabels = {
+      const labels = {
         pods: "Eco-Pods & Studios",
         cad: "CAD Plans & Geometry",
         models: "Scale Models & Renders",
@@ -1019,17 +688,17 @@
 
       Array.from(files).forEach((file, idx) => {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = e => {
           savedArchGallery.unshift({
-            id: "arch-custom-" + Date.now() + "-" + idx,
+            id: "ac-" + Date.now() + "-" + idx,
             title: titleInput.value.trim() || file.name.replace(/\.[^/.]+$/, ""),
             category: catSelect.value,
-            catLabel: catLabels[catSelect.value],
-            desc: "Uploaded architectural visual — Apex Eco-Architecture Cambridge.",
+            catLabel: labels[catSelect.value],
+            desc: "Apex Eco-Architecture Cambridge showcase.",
             imgUrl: e.target.result,
             isCustom: true
           });
-          localStorage.setItem("apex_eco_arch_gallery", JSON.stringify(savedArchGallery));
+          localStorage.setItem("apex_arch_gallery_v2", JSON.stringify(savedArchGallery));
           renderArchGallery();
         };
         reader.readAsDataURL(file);
@@ -1039,33 +708,77 @@
       titleInput.value = "";
     }
 
-    function removeArchPhoto(id) {
-      savedArchGallery = savedArchGallery.filter(item => item.id !== id);
-      localStorage.setItem("apex_eco_arch_gallery", JSON.stringify(savedArchGallery));
+    function deleteArchPhoto(id) {
+      if (!isOwner) return;
+      savedArchGallery = savedArchGallery.filter(x => x.id !== id);
+      localStorage.setItem("apex_arch_gallery_v2", JSON.stringify(savedArchGallery));
       renderArchGallery();
     }
 
-    document.querySelectorAll("[data-arch-filter]").forEach(pill => {
-      pill.addEventListener("click", () => {
-        document.querySelectorAll("[data-arch-filter]").forEach(p => p.classList.remove("active"));
-        pill.classList.add("active");
-        currentArchFilter = pill.dataset.archFilter;
+    document.querySelectorAll("[data-arch-filter]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-arch-filter]").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeArchFilter = btn.dataset.archFilter;
         renderArchGallery();
       });
     });
+
+    const defaultArchReviews = [
+      { id: "ar1", author: "David K. • Modular & Timber Enthusiast", rating: 5, text: "The zero-waste cassette thinking and ground-screw approach solve real site cost and sustainability headaches." },
+      { id: "ar2", author: "Rachel S. • Cambridge", rating: 5, text: "Thoughtful spatial flow, natural light focus, and clear practical documentation." }
+    ];
+
+    let savedArchReviews = JSON.parse(localStorage.getItem("apex_arch_reviews_v1") || "[]");
+
+    function renderArchReviews() {
+      const container = document.getElementById("archReviewsList");
+      const list = [...savedArchReviews, ...defaultArchReviews];
+      container.innerHTML = list.map(r => `
+        <article class="fluid-card">
+          <div>
+            <div class="stars">${"★".repeat(r.rating)}${"☆".repeat(5 - r.rating)}</div>
+            <p>"${r.text}"</p>
+          </div>
+          <div>
+            <strong style="color: var(--gold-warm); font-size: 0.88rem;">${r.author}</strong>
+            ${r.isCustom ? `<br/><button class="btn-del ${isOwner ? "visible" : ""}" onclick="deleteArchReview('${r.id}')">Remove Review</button>` : ""}
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function addArchReview(e) {
+      e.preventDefault();
+      const author = document.getElementById("archRevName").value.trim();
+      const rating = Number(document.getElementById("archRevRating").value);
+      const text = document.getElementById("archRevText").value.trim();
+      if (!author || !text) return;
+
+      savedArchReviews.unshift({ id: "arev-" + Date.now(), author, rating, text, isCustom: true });
+      localStorage.setItem("apex_arch_reviews_v1", JSON.stringify(savedArchReviews));
+      e.target.reset();
+      renderArchReviews();
+    }
+
+    function deleteArchReview(id) {
+      if (!isOwner) return;
+      savedArchReviews = savedArchReviews.filter(r => r.id !== id);
+      localStorage.setItem("apex_arch_reviews_v1", JSON.stringify(savedArchReviews));
+      renderArchReviews();
+    }
 
     function sendArchEmail(e) {
       e.preventDefault();
       const name = document.getElementById("archName").value;
       const topic = document.getElementById("archTopic").value;
       const notes = document.getElementById("archNotes").value;
-      const subject = encodeURIComponent(`Apex Eco-Architecture Enquiry — ${topic} (${name})`);
-      const body = encodeURIComponent(`From: ${name}\nEnquiry Type: ${topic}\n\nDetails:\n${notes}`);
-      window.location.href = `mailto:apexecoarchitecture@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:apexecoarchitecture@gmail.com?subject=${encodeURIComponent(`Apex Eco-Architecture Enquiry — ${topic} (${name})`)}&body=${encodeURIComponent(`From: ${name}\nTopic: ${topic}\n\n${notes}`)}`;
     }
 
     renderArchGallery();
+    renderArchReviews();
+    syncOwnerUI();
   </script>
 </body>
 </html>
-
